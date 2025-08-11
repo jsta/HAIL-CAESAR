@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Output Files &#8212; HAIL-CAESAR 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="output-files">
+<h1>Output Files<a class="headerlink" href="#output-files" title="Link to this heading">¶</a></h1>
+<p>HAIL-CAESAR will output the same types of output data as the CAESAR-Lisflood model. These are:</p>
+<ol class="arabic simple">
+<li><p>Time series file of water discharges and sediment outputs at each time series save interaval</p></li>
+<li><p>DEMs or ‘rasters’ of variables of interest, e.g. Water Depth, Erosion Amount,</p></li>
+</ol>
+<section id="time-series-file">
+<h2>Time Series File<a class="headerlink" href="#time-series-file" title="Link to this heading">¶</a></h2>
+<p>This will be a single file and the filename is set by the parameter file option <cite>write_fname</cite>. It can be any name you like with any extension.</p>
+<p>The file contains 14 columns of text. The number of rows is dependent on the length of the run and the interval you have set to save the time series data.</p>
+<p>The <cite>timeseries_save_interval</cite> option determines how often the model will write to this file. The value is in modelled minutes, or simulated minutes. Setting this to 5 would make HAIL-CAESAR write output here every 5 minutes of simulated time until the end of the model run.</p>
+<p>The columns contain data as follows:</p>
+<ol class="arabic simple">
+<li><p>Timeseries save interval number. This is just a numbering of the rows at each save interval. It is <em>not</em> the model timestep or any actual ‘time’ value. To convert to an actual time, you would multiply each number by <cite>timeseries_save_interval</cite>, example, which would give you the number of simulated minutes elapsed since the start of the run.</p></li>
+<li><p>Actual discharge. (Cumecs, or cubic metres per second). This is the instantaneous rate of water discarge at the outlet(s) of the catchment DEM, for that output timestep. (Calculated by LISFLOD</p></li>
+<li><p>Expected discharge. (Cumecs, or cubic metres per second). This value is based on the simpler TOPMODEL estimation of discharge. (See TOPMODEL literature).</p></li>
+<li><p>Remaining columns (9) - these are sediment outputs for each grain size fraction. (1-9). The sediment outputs are <em>totals</em> in <strong>cubic metres</strong> for that time interval (in contrast to the water discharge values which are instantaneous rates.</p></li>
+</ol>
+<p><em>Note that the format of this file currently mirrors that of CAESAR-Lisflood v1.8, so results from the two models are compatible and you should be able to use any existing plotting scripts you have written for the two models interchangeably.</em></p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/images/flood_depth_fig_crop.png" alt="Logo" />
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=dvalters&repo=HAIL-CAESAR&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running the Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">Parameters</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2017, Declan Valters.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/output.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/dvalters/HAIL-CAESAR" class="github">
+        <img src="_static/github-banner.svg" alt="Fork me on GitHub" class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
