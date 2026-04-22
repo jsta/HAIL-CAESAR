@@ -10,6 +10,7 @@
 #include <fstream>
 #include <ostream>
 #include <string>
+#include <sys/stat.h>
 
 namespace LSDUtils
 {
